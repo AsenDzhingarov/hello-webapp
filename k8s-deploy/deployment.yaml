@@ -18,3 +18,4 @@ spec:
       containers:
       - image: asendzhingarov/hello-webapp:1
         name: hello-webapp
+        stdin: true
