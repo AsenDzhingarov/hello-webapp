@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-webapp
+  name: hello-webapp
+  namespace: hello-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-webapp
+  template:
+    metadata:
+      labels:
+        app: hello-webapp
+    spec:
+      containers:
+      - image: asendzhingarov/hello-webapp
+        name: hello-webapp
