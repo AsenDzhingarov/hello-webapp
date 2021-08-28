@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
       - image: asendzhingarov/hello-webapp
-        name: hello-webapp
+        name: hello-webapp:1
