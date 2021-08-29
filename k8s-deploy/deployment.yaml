@@ -6,7 +6,7 @@ metadata:
   name: hello-webapp
   namespace: hello-webapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: hello-webapp
@@ -16,6 +16,6 @@ spec:
         app: hello-webapp
     spec:
       containers:
-      - image: asendzhingarov/hello-webapp:2
+      - image: asendzhingarov/hello-webapp:1.12
         name: hello-webapp
         stdin: true
