@@ -16,6 +16,6 @@ spec:
         app: hello-webapp
     spec:
       containers:
-              - image: ${appImage}:${IMAGE_TAG}
+      - image: ${appImage}:${IMAGE_TAG}
         name: hello-webapp
         stdin: true
