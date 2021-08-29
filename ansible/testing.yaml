@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+  - name: Get service information
+    k8s_info:
+      api_version: v1
+      kind: Service
+      name: hello-webapp-svc
+      namespace: "{{ ns_name }}"
+    register: service_info
+  - name: print
+    set_fact:
+      node_port: "{{ service_info.resources[0].spec.ports[0].nodePort }}"
+  - name: Check if HTTP return status and content
+    uri:
+      url: "http://192.168.202.10:{{node_port }}"
+      return_content: yes
+    register: reply
+    failed_when: (reply.status != 200) and ("'Helllo' not in reply.content")

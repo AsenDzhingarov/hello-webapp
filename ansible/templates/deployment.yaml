@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-webapp
+  name: hello-webapp
+  namespace: "{{ ns_name }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-webapp
+  template:
+    metadata:
+      labels:
+        app: hello-webapp
+    spec:
+      containers:
+      - image: "{{ image_id }}"
+        name: hello-webapp
+        stdin: true

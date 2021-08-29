@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+  - name: Create the namespace
+    k8s:
+      state: present
+      definition: "{{ lookup('template', 'namespace.yaml') | from_yaml }}"
+  - name: Deploy the application
+    k8s:
+      state: present
+      definition: "{{ lookup('template', 'deployment.yaml') | from_yaml }}"
+  - name: Deploy the service
+    k8s:
+      state: present
+      definition: "{{ lookup('template', 'service.yaml') | from_yaml }}"
