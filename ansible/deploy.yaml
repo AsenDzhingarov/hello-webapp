@@ -4,11 +4,20 @@
     k8s:
       state: present
       definition: "{{ lookup('template', 'namespace.yaml') | from_yaml }}"
-  - name: Deploy the application
-    k8s:
-      state: present
-      definition: "{{ lookup('template', 'deployment.yaml') | from_yaml }}"
+
   - name: Deploy the service
     k8s:
       state: present
       definition: "{{ lookup('template', 'service.yaml') | from_yaml }}"
+
+  - name: Deploy the application
+    k8s:
+      state: present
+      definition: "{{ lookup('template', 'deployment.yaml') | from_yaml }}"
+
+  - name: Wait for application deployment to be completed
+    shell: "kubectl rollout status deployment/hello-webapp -n {{ ns_name }}"
+    register: rollout_status
+    until: rollout_status.stdout == 'deployment "hello-webapp" successfully rolled out'
+    retries: 20
+    delay: 10

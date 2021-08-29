@@ -5,7 +5,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
  
 class HelloHTTPRequestHandler(BaseHTTPRequestHandler):
  
-  message = '<html><body style="background-color:powderblue;"><h1>This is a heading</h1><p>This is a paragraph.</p></body></html>'
+  message = 'Hello World! 今日は'
+  #message = '<html><body style="background-color:powderblue;"><h1>Hello World!</h1></body></html>'
  
   def do_GET(self):
     self.send_response(200)

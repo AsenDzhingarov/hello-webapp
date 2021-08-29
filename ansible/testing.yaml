@@ -7,12 +7,23 @@
       name: hello-webapp-svc
       namespace: "{{ ns_name }}"
     register: service_info
-  - name: print
+
+  - name: Set nodePort
     set_fact:
       node_port: "{{ service_info.resources[0].spec.ports[0].nodePort }}"
-  - name: Check if HTTP return status and content
+
+  - name: Make HTTP request
     uri:
       url: "http://192.168.202.10:{{node_port }}"
       return_content: yes
-    register: reply
-    failed_when: (reply.status != 200) and ("'Helllo' not in reply.content")
+    register: response
+
+  - name: Verify if return status is 200
+    assert:
+      that:
+        - response.status == 200
+
+  - name: Verify HTTP response content
+    assert:
+      that:
+        - "'Hello' in response.content"
