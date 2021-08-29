@@ -4,7 +4,7 @@ metadata:
   labels:
     app: hello-webapp
   name: hello-webapp
-  namespace: hello-webapp
+  namespace: ${PROD_NAMESPACE}
 spec:
   replicas: 3
   selector:
@@ -16,6 +16,6 @@ spec:
         app: hello-webapp
     spec:
       containers:
-      - image: asendzhingarov/hello-webapp:1.12
+              - image: ${appImage}:${IMAGE_TAG}
         name: hello-webapp
         stdin: true

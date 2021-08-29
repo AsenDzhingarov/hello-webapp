@@ -4,7 +4,7 @@ metadata:
   labels:
     app: hello-webapp-svc
   name: hello-webapp-svc
-  namespace: hello-webapp
+  namespace: ${PROD_NAMESPACE}
 spec:
   ports:
   - name: 8001-8081
