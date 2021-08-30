@@ -21,3 +21,5 @@
     until: rollout_status.stdout == 'deployment "hello-webapp" successfully rolled out'
     retries: 20
     delay: 10
+
+  - debug: var=rollout_status.stdout_lines
