@@ -5,7 +5,7 @@ namespace: hello-webapp-prod-gitops
 
 images:
   - name: asendzhingarov/hello-webapp
-    newTag: 1.22
+    newTag: "1.22"
 
 resources:
   - namespace.yaml
