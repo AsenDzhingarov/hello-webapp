@@ -16,6 +16,6 @@ spec:
         app: hello-webapp
     spec:
       containers:
-              - image: asendzhingarov/hello-webapp:1.21
+      - image: asendzhingarov/hello-webapp:1.21
         name: hello-webapp
         stdin: true
