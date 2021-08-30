@@ -2,6 +2,6 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY src/ .
+COPY app/ .
 
-ENTRYPOINT [ "python", "app.py" ]
+CMD [ "python", "hello-webapp.py" ]
